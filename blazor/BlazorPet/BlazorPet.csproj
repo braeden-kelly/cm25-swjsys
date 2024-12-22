@@ -6,4 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <Target Name="Tailwind" BeforeTargets="Build">
+    <Exec Command="tailwindcss -i ./Styles/app.css -o ./wwwroot/app.css" />
+  </Target>
+
+  <ItemGroup>
+    <UpToDateCheckBuilt Include="Styles/app.css" Set="Css" />
+    <UpToDateCheckBuilt Include="wwwroot/app.css" Set="Css" />
+    <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
+  </ItemGroup>
+
 </Project>
