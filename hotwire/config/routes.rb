@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :habits
   get "signup", to: "registrations#new"
   post "signup", to: "registrations#create"
 
