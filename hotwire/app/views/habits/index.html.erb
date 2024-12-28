@@ -15,13 +15,4 @@
       <%= render task %>
     <% end %>
   </div>
-
-  <div id="habits" class="min-w-full">
-    <% @habits.each do |habit| %>
-      <%= render habit %>
-      <p>
-        <%= link_to "Show this habit", habit, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
-    <% end %>
-  </div>
 </div>

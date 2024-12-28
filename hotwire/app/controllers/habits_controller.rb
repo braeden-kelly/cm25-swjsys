@@ -4,7 +4,7 @@ class HabitsController < ApplicationController
   # GET /habits or /habits.json
   def index
     @habits = Habit.where(user: Current.user).order(:name)
-    @tasks = Task.where(user: Current.user).where(day: Date.today)
+    @tasks = Task.where(user: Current.user).where(day: Date.today).order(:name)
   end
 
   # GET /habits/1 or /habits/1.json
@@ -26,7 +26,7 @@ class HabitsController < ApplicationController
 
     respond_to do |format|
       if @habit.save
-        format.html { redirect_to @habit, notice: "Habit was successfully created." }
+        format.html { redirect_to habits_path, notice: "Habit was successfully created." }
         format.json { render :show, status: :created, location: @habit }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class HabitsController < ApplicationController
   def update
     respond_to do |format|
       if @habit.update(habit_params)
-        format.html { redirect_to @habit, notice: "Habit was successfully updated." }
+        format.html { redirect_to habits_path, notice: "Habit was successfully updated." }
         format.json { render :show, status: :ok, location: @habit }
       else
         format.html { render :edit, status: :unprocessable_entity }
