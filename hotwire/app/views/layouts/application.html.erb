@@ -24,10 +24,7 @@
   </head>
 
   <body>
-    <nav>
-      <%= link_to "Home", root_path %>
-      <%= button_to "Log out #{Current.user.email_address}", session_path, method: :delete if authenticated? %>
-    </nav>
+    <%= render "nav" %>
 
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
