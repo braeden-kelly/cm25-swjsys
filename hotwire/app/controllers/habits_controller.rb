@@ -4,6 +4,7 @@ class HabitsController < ApplicationController
   # GET /habits or /habits.json
   def index
     @habits = Habit.where(user: Current.user).order(:name)
+    @tasks = Task.where(user: Current.user).where(day: Date.today)
   end
 
   # GET /habits/1 or /habits/1.json

@@ -10,6 +10,12 @@
     <%= link_to "New habit", new_habit_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
+  <div id="tasks" class="min-w-full">
+    <% @tasks.each do |task| %>
+      <%= render task %>
+    <% end %>
+  </div>
+
   <div id="habits" class="min-w-full">
     <% @habits.each do |habit| %>
       <%= render habit %>
