@@ -3,7 +3,7 @@ class HabitsController < ApplicationController
 
   # GET /habits or /habits.json
   def index
-    @habits = Habit.all
+    @habits = Habit.where(user: Current.user).order(:name)
   end
 
   # GET /habits/1 or /habits/1.json
