@@ -1,5 +1,9 @@
 
 <nav class="bg-white shadow flex p-3">
     <%= link_to "Home", root_path, class: "flex-1" %>
-    <%= button_to "Log out #{Current.user.email_address}", session_path, method: :delete, class: "self-end" if authenticated? %>
+    <% if authenticated? %>
+        <%= button_to "Log out #{Current.user.email_address}", session_path, method: :delete, class: "self-end"%>
+    <% else %>
+        <%= link_to "Log in", new_session_path, class: "self-end"%>
+    <% end %>
 </nav>
