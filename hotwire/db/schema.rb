@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_27_212519) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_28_200703) do
   create_table "habits", force: :cascade do |t|
     t.string "name"
     t.integer "user_id", null: false
@@ -28,6 +28,18 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_27_212519) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.integer "habit_id", null: false
+    t.date "day"
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["habit_id"], name: "index_tasks_on_habit_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
@@ -38,4 +50,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_27_212519) do
 
   add_foreign_key "habits", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "tasks", "habits"
+  add_foreign_key "tasks", "users"
 end

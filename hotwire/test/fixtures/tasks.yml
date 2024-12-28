@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  user: one
+  habit: one
+  day: 2024-12-28
+  completed_at: 2024-12-28 15:07:03
+
+two:
+  name: MyString
+  user: two
+  habit: two
+  day: 2024-12-28
+  completed_at: 2024-12-28 15:07:03
