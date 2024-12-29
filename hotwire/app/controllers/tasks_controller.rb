@@ -3,7 +3,7 @@ class TasksController < ApplicationController
     @task = Task.find(params.expect(:id))
     respond_to do |format|
       if @task.update(completed_at: Time.current)
-        format.html { redirect_to habits_path, notice: "Task completed." }
+        format.html { redirect_to habits_path }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     @task = Task.find(params.expect(:id))
     respond_to do |format|
       if @task.update(completed_at: nil)
-        format.html { redirect_to habits_path, notice: "Task uncompleted." }
+        format.html { redirect_to habits_path }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
