@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :habits
+  patch "tasks/:id/complete", to: "tasks#complete", as: :complete_task
+  patch "tasks/:id/uncomplete", to: "tasks#uncomplete", as: :uncomplete_task
   get "signup", to: "registrations#new"
   post "signup", to: "registrations#create"
 
