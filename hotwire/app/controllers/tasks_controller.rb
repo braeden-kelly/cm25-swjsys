@@ -4,10 +4,8 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(completed_at: Time.current)
         format.html { redirect_to habits_path }
-        format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -17,10 +15,8 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(completed_at: nil)
         format.html { redirect_to habits_path }
-        format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end

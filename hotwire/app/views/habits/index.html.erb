@@ -13,6 +13,7 @@
   </div>
 
   <div class="mt-3 border-b border-t border-gray-200 divide-y divide-gray-200">
+    <%= turbo_stream_from 'tasks' %>
     <% @tasks.each do |task| %>
       <%= render "tasks/form", task: task%>
     <% end %>
