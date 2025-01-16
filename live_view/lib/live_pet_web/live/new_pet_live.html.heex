@@ -1,0 +1,32 @@
+<.header>New Pet</.header>
+
+<.warning title="Be Respectful With Pet Names">
+  <p>
+    Other users will be able to see the name of your pet. If in doubt, read the <.link
+      class="underline"
+      href="https://codemash.org/codemash-code-conduct/"
+    > code of conduct </.link>. If still in doubt, choose a different name.
+  </p>
+</.warning>
+
+<.simple_form for={@form} id="pet_form" phx-submit="save" phx-change="validate">
+  <.input field={@form[:name]} type="text" label="Name" required />
+  <.input field={@form[:image]} type="hidden" required value={@selected_image} />
+
+  <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <li
+      :for={image <- @images}
+      class={["col-span-1", @selected_image == image && "border-4 border-blue-700"]}
+      phx-click="select_image"
+      phx-value-image={image}
+    >
+      <img src={image} />
+    </li>
+  </ul>
+
+  <:actions>
+    <.button phx-disable-with="Creating pet..." class="w-full">
+      Create Pet <span aria-hidden="true">→</span>
+    </.button>
+  </:actions>
+</.simple_form>

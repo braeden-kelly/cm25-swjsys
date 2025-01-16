@@ -1,0 +1,26 @@
+<div class="grid grid-cols-2 gap-6">
+  <.header class="col-span-2">
+    {@pet.name} <span :if={!@pet.is_alive}>☠️</span>
+    <:actions :if={@pet.is_alive}>
+      <.button phx-click="feed">Feed 🍎</.button>
+    </:actions>
+  </.header>
+  <div class="col-span-1 text-center">
+    <img class="w-auto" src={@pet.image} />
+  </div>
+  <.list>
+    <:item title="Age">{@pet.age}</:item>
+    <:item title="Hunger">
+      <LivePetWeb.PetComponents.hearts class="" hunger={@pet.hunger} />
+    </:item>
+  </.list>
+</div>
+
+<.live_component
+  :if={@pet.is_alive}
+  module={LivePetWeb.Pet.ActivePetsLive}
+  id={@active_pets_component_id}
+  pet_id={@pet_id}
+  available_treats={@available_treats}
+  user={@current_user}
+/>
